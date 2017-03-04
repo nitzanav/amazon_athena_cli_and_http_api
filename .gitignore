@@ -1,10 +1,16 @@
+.classpath
+.gitignore
+.project
+.settings/org.eclipse.jdt.core.prefs
+
+
 *.class
 
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
 
 # Package Files #
-*.jar
+#*.jar
 *.war
 *.ear
 
