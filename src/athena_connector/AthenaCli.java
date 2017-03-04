@@ -12,8 +12,6 @@ import org.apache.commons.cli.ParseException;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.commons.lang3.StringUtils;
 
-// echo show tables in live_sync | java -classpath ./:./aws-java-sdk-1.11.98.jar:./AthenaJDBC41-1.0.0.jar Main s3://snippet-files/athena-results/ warehouse-app
-
 public class AthenaCli {
 
 	public static void main(String[] args) {
