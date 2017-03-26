@@ -14,21 +14,49 @@
           <target>1.8</target>
         </configuration>
       </plugin>
-    <plugin>
-      <artifactId>maven-assembly-plugin</artifactId>
-      <configuration>
-        <finalName>athena-cli</finalName>
-        <archive>
-          <manifest>
-            <mainClass>athena_connector.AthenaCli</mainClass>
-          </manifest>
-        </archive>
-        <descriptorRefs>
-          <descriptorRef>jar-with-dependencies</descriptorRef>
-        </descriptorRefs>
-		<appendAssemblyId>false</appendAssemblyId>
-      </configuration>
-    </plugin>
+      <plugin>
+        <artifactId>maven-assembly-plugin</artifactId>
+        <executions>
+	        <execution>
+		        <id>athena-cli</id>
+		        <configuration>
+		          <finalName>athena-cli</finalName>
+		          <archive>
+		            <manifest>
+		              <mainClass>athena_connector.AthenaCli</mainClass>
+		            </manifest>
+		          </archive>
+		          <descriptorRefs>
+		            <descriptorRef>jar-with-dependencies</descriptorRef>
+		          </descriptorRefs>
+		          <appendAssemblyId>false</appendAssemblyId>
+				</configuration>
+    	        <phase>compile</phase>
+        	    <goals>
+                	<goal>single</goal>
+            	</goals>
+			</execution>
+	        <execution>
+		        <id>athena-http-server</id>
+		        <configuration>
+		          <finalName>athena-http-server</finalName>
+		          <archive>
+		            <manifest>
+		              <mainClass>athena_connector.HttpServer</mainClass>
+		            </manifest>
+		          </archive>
+		          <descriptorRefs>
+		            <descriptorRef>jar-with-dependencies</descriptorRef>
+		          </descriptorRefs>
+		          <appendAssemblyId>false</appendAssemblyId>
+				</configuration>
+    	        <phase>compile</phase>
+        	    <goals>
+                	<goal>single</goal>
+            	</goals>
+			</execution>
+		</executions>
+      </plugin>
     </plugins>
   </build>
 <repositories>
