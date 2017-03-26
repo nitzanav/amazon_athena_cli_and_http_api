@@ -13,7 +13,8 @@ public class AthenaConnector {
 	static final String athenaUrl = "jdbc:awsathena://athena.us-east-1.amazonaws.com:443";
 
 	public static void execute(String s3_staging_dir, String aws_credentials_provider_class,
-			String aws_credentials_provider_arguments, String log_path, String log_level, String resultSetFormatter, String sql) {
+			String aws_credentials_provider_arguments, String log_path, String log_level, String resultSetFormatter,
+			String sql) {
 
 		Connection conn = null;
 		Statement statement = null;
@@ -33,7 +34,7 @@ public class AthenaConnector {
 			conn = DriverManager.getConnection(athenaUrl, info);
 			statement = conn.createStatement();
 			boolean hasResultSet = statement.execute(sql);
-			if(hasResultSet && resultSetFormatter != null) {
+			if (hasResultSet && resultSetFormatter != null) {
 				IResultSetFormatter formater = athena_connector.resultset_formaters.Factory.create(resultSetFormatter);
 				rs = statement.getResultSet();
 				formater.print(rs);
