@@ -31,7 +31,7 @@
 		          </descriptorRefs>
 		          <appendAssemblyId>false</appendAssemblyId>
 				</configuration>
-    	        <phase>compile</phase>
+    	        <phase>package</phase>
         	    <goals>
                 	<goal>single</goal>
             	</goals>
@@ -50,7 +50,7 @@
 		          </descriptorRefs>
 		          <appendAssemblyId>false</appendAssemblyId>
 				</configuration>
-    	        <phase>compile</phase>
+    	        <phase>package</phase>
         	    <goals>
                 	<goal>single</goal>
             	</goals>
