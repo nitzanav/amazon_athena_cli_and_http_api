@@ -107,4 +107,4 @@ For more parameters see https://github.com/nitzanav/amazon_athena_cli_and_http_s
 you wil need to google up how to install java and maven if you don't have it.
 
 ## How to contribute
-Whenever you want and how you want, everyone is welcomed. 
+Whenever you want and however you want, everyone is welcomed. 
