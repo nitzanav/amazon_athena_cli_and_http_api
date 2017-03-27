@@ -1,9 +1,6 @@
 # amazon_athena_cli_and_http_server
 Amazon Athena CLI and HTTP Server for running athena SQL, exporting athena SQL to CSV, using CLI and HTTP.
 
-## Install
-`mvn clean install`
-
 ## Execute AWS Athena CLI to epost as CSV
 `$ echo select 1 | java -jar target/athena-cli.jar -s s3://my_bucket/athena-results/ -f SingleValue -e s3://my_bucket/export/athena/csv/to/ath_test.csv`
 
@@ -101,3 +98,12 @@ Now do something like:
 ```
 curl --request POST http://localhost:4567/athena_connector -H 'Content-Type: application/json' -F "sql=SELECT+1&s3_staging_dir=s3://my_bucket/athena-results/&export_to_s3_file=s3://my_bucket/export/athena/csv/to/ath_test.csv"
 ```
+
+For more parameters see https://github.com/nitzanav/amazon_athena_cli_and_http_server/blob/master/src/athena_connector/HttpServer.java
+
+## How to Build Sources
+`mvn clean install`
+
+you wil need to google up how to install java and maven if you don't have it.
+
+
