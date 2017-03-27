@@ -2,7 +2,7 @@
 Amazon Athena CLI and HTTP Server for running athena SQL, exporting athena SQL to CSV, using CLI and HTTP.
 
 ## Install
-mvn clean install
+`mvn clean install`
 
 ## Execute AWS Athena CLI to epost as CSV
 `$ echo select 1 | java -jar target/athena-cli.jar -s s3://my_bucket/athena-results/ -f SingleValue -e s3://my_bucket/export/athena/csv/to/ath_test.csv`
