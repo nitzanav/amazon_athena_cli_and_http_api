@@ -4,16 +4,20 @@ Amazon Athena CLI and HTTP Server for running athena SQL, exporting athena SQL t
 ## Install
 mvn clean install
 
-## Execute AWS Athena CLI
+## Execute AWS Athena CLI to epost as CSV
 `$ echo select 1 | java -jar target/athena-cli.jar -s s3://my_bucket/athena-results/ -f SingleValue -e s3://my_bucket/export/athena/csv/to/ath_test.csv`
 
 This will export CSV to s3://my_bucket/export/athena/csv/to/ath_test.csv and will look for credentials using DefaultAWSCredentialsProviderChain, at Environment Variables, ~/.aws/credentials, and more.
 
 If you want to use different profile use `-c com.amazonaws.auth.profile.ProfileCredentialsProvider -a profile-name` or read on [AWSCredentialsProvider](http://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/auth/AWSCredentialsProvider.html).
 
+## to export as JSON
+contribute and implement at https://github.com/nitzanav/amazon_athena_cli_and_http_server/tree/master/src/athena_connector/resultset_formaters
+
 ## Get help on executing Amazon Athena CLI
 `$ java -jar target/athena-cli.jar`
 <pre>
+
 Missing required option: s
 usage: Amazon Athena CLI
  -a,--aws_credentials_provider_arguments <arg>   Arguments for the
@@ -78,4 +82,22 @@ usage: Amazon Athena CLI
                                                  WARN, ERROR, ALL, OFF,
                                                  FATAL, TRACE. Default is
                                                  WARN.
-                                                 </pre>
+
+</pre>
+
+## How to start a web server
+You can launch a microservice (secured only to you internal VPC becuase there is no athentication!) instead of using CLI.
+```
+$ java -jar target/athena-http-server.jar
+[Thread-0] INFO org.eclipse.jetty.util.log - Logging initialized @193ms
+[Thread-0] INFO spark.embeddedserver.jetty.EmbeddedJettyServer - == Spark has ignited ...
+[Thread-0] INFO spark.embeddedserver.jetty.EmbeddedJettyServer - >> Listening on 0.0.0.0:4567
+[Thread-0] INFO org.eclipse.jetty.server.Server - jetty-9.3.z-SNAPSHOT
+[Thread-0] INFO org.eclipse.jetty.server.ServerConnector - Started ServerConnector@5fde0aa0{HTTP/1.1,[http/1.1]}{0.0.0.0:4567}
+[Thread-0] INFO org.eclipse.jetty.server.Server - Started @341ms
+```
+
+Now do something like:
+```
+curl --request POST http://localhost:4567/athena_connector -H 'Content-Type: application/json' -F "sql=SELECT+1&s3_staging_dir=s3://my_bucket/athena-results/&export_to_s3_file=s3://my_bucket/export/athena/csv/to/ath_test.csv"
+```
