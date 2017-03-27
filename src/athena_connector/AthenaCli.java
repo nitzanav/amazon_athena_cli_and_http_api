@@ -33,7 +33,7 @@ public class AthenaCli {
 
 		Option aws_credentials_provider_class = Option.builder("c").longOpt("aws_credentials_provider_class").hasArg()
 				.required(false)
-				.desc("The credentials provider class name, which implements the AWSCredentialsProvider interface. The default is com.amazonaws.auth.DefaultAWSCredentialsProviderChain")
+				.desc("The credentials provider class name, which implements the AWSCredentialsProvider interface. The default is com.amazonaws.auth.DefaultAWSCredentialsProviderChain. Will look at Environment Variables, ~/.aws/credentials, and more.")
 				.build();
 
 		Option aws_credentials_provider_arguments = Option.builder("a").longOpt("aws_credentials_provider_arguments")
